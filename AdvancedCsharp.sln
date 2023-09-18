@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedCharp.Structures", "AdvancedCharp.Structures\AdvancedCharp.Structures.csproj", "{2C91E354-5779-4205-8FF0-69462401D327}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpAdvanced.Oop", "CSharpAdvanced.Oop\CSharpAdvanced.Oop.csproj", "{18F133BF-AF03-45DB-A956-7414ECA52210}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpAdvanced.Shared", "CSharpAdvanced.Shared\CSharpAdvanced.Shared.csproj", "{A5C7772C-EE9C-4848-BE20-213C077D746C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{2C91E354-5779-4205-8FF0-69462401D327}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C91E354-5779-4205-8FF0-69462401D327}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C91E354-5779-4205-8FF0-69462401D327}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F133BF-AF03-45DB-A956-7414ECA52210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F133BF-AF03-45DB-A956-7414ECA52210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F133BF-AF03-45DB-A956-7414ECA52210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F133BF-AF03-45DB-A956-7414ECA52210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5C7772C-EE9C-4848-BE20-213C077D746C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5C7772C-EE9C-4848-BE20-213C077D746C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5C7772C-EE9C-4848-BE20-213C077D746C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5C7772C-EE9C-4848-BE20-213C077D746C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
