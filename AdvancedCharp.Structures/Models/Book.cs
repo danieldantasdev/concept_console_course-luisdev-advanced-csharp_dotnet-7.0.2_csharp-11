@@ -6,7 +6,8 @@ namespace AdvancedCharp.Structures.Models;
 
 public class Book
 {
-    public Book(string title, GenreEnum genre, ShelfLocationStruct locationStruct, BookDimensionsRecord dimensionsRecord)
+    public Book(string title, GenreEnum genre, ShelfLocationStruct locationStruct,
+        BookDimensionsRecord dimensionsRecord)
     {
         Title = title;
         GenreEnum = genre;

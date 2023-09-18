@@ -1,4 +1,4 @@
-﻿using AdvancedCsharp.OopConsole.Infrastructure;
+﻿using CSharpAdvanced.Oop.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,13 +11,13 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "Any",
-                      policy =>
-                      {
-                          policy.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
-                      });
+    options.AddPolicy("Any",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
 });
 
 builder.Services.AddControllers();
@@ -42,4 +42,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-

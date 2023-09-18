@@ -1,69 +1,67 @@
 ﻿using System.Diagnostics;
 
-namespace CSharpAdvanced.DelegateEvents
+namespace CSharpAdvanced.DelegateEvents;
+
+public class InstrumentationService
 {
-	public class InstrumentationService
-	{
-        public int Measure(Func<int> method)
-        {
-            var stopwatch = new Stopwatch();
+    public int Measure(Func<int> method)
+    {
+        var stopwatch = new Stopwatch();
 
-            stopwatch.Start();
-            var result = method();
-            stopwatch.Stop();
+        stopwatch.Start();
+        var result = method();
+        stopwatch.Stop();
 
-            Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
+        Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
 
-            return result;
-        }
+        return result;
+    }
 
-        public T Measure<T>(Func<int, T> method, int parameter)
-        {
-            var stopwatch = new Stopwatch();
+    public T Measure<T>(Func<int, T> method, int parameter)
+    {
+        var stopwatch = new Stopwatch();
 
-            stopwatch.Start();
-            var result = method(parameter);
-            stopwatch.Stop();
+        stopwatch.Start();
+        var result = method(parameter);
+        stopwatch.Stop();
 
-            Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
+        Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
 
-            return result;
-        }
+        return result;
+    }
 
-        public TResult Measure<TInput, TResult>(Func<TInput, TResult> method, TInput parameter)
-        {
-            var stopwatch = new Stopwatch();
+    public TResult Measure<TInput, TResult>(Func<TInput, TResult> method, TInput parameter)
+    {
+        var stopwatch = new Stopwatch();
 
-            stopwatch.Start();
-            var result = method(parameter);
-            stopwatch.Stop();
+        stopwatch.Start();
+        var result = method(parameter);
+        stopwatch.Stop();
 
-            Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
+        Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
 
-            return result;
-        }
+        return result;
+    }
 
-        public void Measure(Action method)
-        {
-            var stopwatch = new Stopwatch();
+    public void Measure(Action method)
+    {
+        var stopwatch = new Stopwatch();
 
-            stopwatch.Start();
-            method();
-            stopwatch.Stop();
+        stopwatch.Start();
+        method();
+        stopwatch.Stop();
 
-            Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
-        }
+        Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
+    }
 
-        public void Measure<T>(Action<T> method, T parameter)
-        {
-            var stopwatch = new Stopwatch();
+    public void Measure<T>(Action<T> method, T parameter)
+    {
+        var stopwatch = new Stopwatch();
 
-            stopwatch.Start();
-            method(parameter);
-            stopwatch.Stop();
+        stopwatch.Start();
+        method(parameter);
+        stopwatch.Stop();
 
-            Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
-        }
+        Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
     }
 }
-

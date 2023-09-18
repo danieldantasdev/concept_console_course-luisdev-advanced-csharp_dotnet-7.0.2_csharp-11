@@ -1,12 +1,6 @@
-﻿namespace CSharpAdvanced.Shared
+﻿namespace CSharpAdvanced.Shared;
+
+public class BaseEntity
 {
-	public class BaseEntity
-	{
-		public BaseEntity()
-		{
-		}
-
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }
-

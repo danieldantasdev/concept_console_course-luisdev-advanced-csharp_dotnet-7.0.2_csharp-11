@@ -24,10 +24,10 @@ var genericRepository = new GenericRepository<Customer>(context);
 Console.WriteLine("Começando com Async Await");
 
 var customer = new Customer("LuisDev");
-Thread thread = new Thread(() => genericRepository.InsertAsync(customer).Wait());
+var thread = new Thread(() => genericRepository.InsertAsync(customer).Wait());
 thread.Start();
 
-Task task = Task.Run(() => genericRepository.InsertAsync(customer));
+var task = Task.Run(() => genericRepository.InsertAsync(customer));
 //task.Wait();
 await task;
 
@@ -49,7 +49,7 @@ var result = client.GetFromJsonAsync<List<User>>("https://63178ecbece2736550b65d
     {
         if (response.Status == TaskStatus.RanToCompletion)
         {
-            List<User> users = response.Result;
+            var users = response.Result;
             ProcessUsers(users);
         }
         else if (response.Status == TaskStatus.Faulted)
@@ -74,10 +74,7 @@ var resultAwaiting = await client
 
 void ProcessUsers(List<User> users)
 {
-    foreach (var user in users)
-    {
-        Console.WriteLine($"User: {user.Name}, Id: {user.Id}");
-    }
+    foreach (var user in users) Console.WriteLine($"User: {user.Name}, Id: {user.Id}");
 }
 
 //if (resultAwaiting is null)
@@ -86,20 +83,14 @@ void ProcessUsers(List<User> users)
 // Semaphore
 Console.WriteLine("Começando com Semaphore");
 
-SemaphoreSlim _semaphore = new SemaphoreSlim(10); // Limiting to 10 concurrent operations
-ConcurrentQueue<User> _usersToProcess = new ConcurrentQueue<User>();
-ConcurrentBag<User> _processedUsers = new ConcurrentBag<User>();
+var _semaphore = new SemaphoreSlim(10); // Limiting to 10 concurrent operations
+var _usersToProcess = new ConcurrentQueue<User>();
+var _processedUsers = new ConcurrentBag<User>();
 
-foreach (var user in resultAwaiting)
-{
-    _usersToProcess.Enqueue(user);
-}
+foreach (var user in resultAwaiting) _usersToProcess.Enqueue(user);
 
 var tasks = new List<Task>();
-for (int i = 0; i < resultAwaiting.Count; i++)
-{
-    tasks.Add(ProcessUserAsync());
-}
+for (var i = 0; i < resultAwaiting.Count; i++) tasks.Add(ProcessUserAsync());
 
 await Task.WhenAll(tasks);
 
@@ -129,17 +120,14 @@ async Task ProcessUserAsync()
 // Lock
 Console.WriteLine("Começando com Lock");
 
-object lockObject = new object();
-List<Customer> customersToProcessList = new List<Customer>
-    { new Customer("Cassiano"), new Customer("Anthony"), new Customer("Ramon") }; // Replace with your collection
+var lockObject = new object();
+var customersToProcessList = new List<Customer>
+    { new("Cassiano"), new("Anthony"), new("Ramon") }; // Replace with your collection
 
 var tasksLocked = new List<Task>();
-List<Customer> sharedCustomers = new List<Customer>();
+var sharedCustomers = new List<Customer>();
 
-for (int i = 0; i < customersToProcessList.Count; i++)
-{
-    tasksLocked.Add(ProcessUserLockAsync(customersToProcessList[i]));
-}
+for (var i = 0; i < customersToProcessList.Count; i++) tasksLocked.Add(ProcessUserLockAsync(customersToProcessList[i]));
 
 await Task.WhenAll(tasksLocked);
 
@@ -162,10 +150,7 @@ genericRepository.Save();
 
 var allCustomers = genericRepository.GetAll();
 
-foreach (var item in allCustomers)
-{
-    Console.WriteLine(item.Name);
-}
+foreach (var item in allCustomers) Console.WriteLine(item.Name);
 
 Console.ReadKey();
 

@@ -9,14 +9,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CSharpAdvanced.Oop\CSharpAdvanced.Oop.csproj" />
-      <ProjectReference Include="..\CSharpAdvanced.Shared\CSharpAdvanced.Shared.csproj" />
+        <ProjectReference Include="..\CSharpAdvanced.Oop\CSharpAdvanced.Oop.csproj"/>
+        <ProjectReference Include="..\CSharpAdvanced.Shared\CSharpAdvanced.Shared.csproj"/>
     </ItemGroup>
 
 </Project>

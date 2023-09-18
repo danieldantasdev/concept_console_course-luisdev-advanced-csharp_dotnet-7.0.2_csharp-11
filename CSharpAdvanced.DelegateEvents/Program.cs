@@ -5,8 +5,8 @@ BinaryOperation multiply = delegate(int x, int y) { return x * y; };
 
 BinaryOperation sum = delegate(int x, int y) { return x + y; };
 
-int result = multiply(3, 4);
-int sumResult = sum(3, 4);
+var result = multiply(3, 4);
+var sumResult = sum(3, 4);
 
 Action<string> printMessage = message => Console.WriteLine(message);
 
@@ -14,20 +14,20 @@ printMessage("Hello, World!");
 
 Func<int, int> square = x => x * x;
 
-int squaredValue = square(4);
+var squaredValue = square(4);
 
 Func<int, int, int> addNumbers = (a, b) => a + b;
 
-int addNumbersResult = addNumbers(5, 7);
+var addNumbersResult = addNumbers(5, 7);
 
 //List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
 //Predicate<int> isEven = number => number % 2 == 0;
 
 var customers = new List<Customer>
 {
-    new Customer(1, "Luis"),
-    new Customer(2, "Cassiano"),
-    new Customer(3, "Jesse")
+    new(1, "Luis"),
+    new(2, "Cassiano"),
+    new(3, "Jesse")
 };
 
 customers.Where(c => c.Name.Contains("Luis"));

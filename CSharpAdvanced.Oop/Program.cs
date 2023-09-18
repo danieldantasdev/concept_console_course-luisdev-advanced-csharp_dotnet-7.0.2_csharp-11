@@ -7,17 +7,14 @@ NotificationService email = new EmailService();
 NotificationService sms = new SmsService();
 NotificationService push = new PushNotificationService();
 
-List<NotificationService> services = new List<NotificationService>
+var services = new List<NotificationService>
 {
     email,
     sms,
     push
 };
 
-foreach (var service in services)
-{
-    service.SendNotification("Hello, world!");
-}
+foreach (var service in services) service.SendNotification("Hello, world!");
 
 // Generics
 var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();

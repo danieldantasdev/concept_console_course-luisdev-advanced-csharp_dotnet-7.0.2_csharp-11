@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 Console.WriteLine("Hello, World!");
 
 
-string json = @"{
+var json = @"{
             ""specifications"": [
                 {
                     ""Field"": ""my_name"",
@@ -26,40 +26,35 @@ string json = @"{
 
 var data = JsonConvert.DeserializeObject<DataObject>(json);
 
-List<Person> persons = new List<Person>();
+var persons = new List<Person>();
 
-PropertyInfo[] personProperties = typeof(Person).GetProperties();
+var personProperties = typeof(Person).GetProperties();
 
-Dictionary<string, PropertyInfo> specificationPropertyCache = new Dictionary<string, PropertyInfo>();
+var specificationPropertyCache = new Dictionary<string, PropertyInfo>();
 
 foreach (var spec in data.Specifications)
 {
     var targetProperty = personProperties.FirstOrDefault(prop => prop.Name == spec.Destination);
 
-    if (targetProperty != null)
-    {
-        specificationPropertyCache[spec.Field] = targetProperty;
-    }
+    if (targetProperty != null) specificationPropertyCache[spec.Field] = targetProperty;
 }
 
 foreach (var value in data.Values)
 {
-    Person person = new Person();
+    var person = new Person();
 
     foreach (var spec in data.Specifications)
-    {
-        if (value.TryGetValue(spec.Field, out object fieldValue) &&
-            specificationPropertyCache.TryGetValue(spec.Field, out PropertyInfo targetProperty))
+        if (value.TryGetValue(spec.Field, out var fieldValue) &&
+            specificationPropertyCache.TryGetValue(spec.Field, out var targetProperty))
         {
             var convertedValue = Convert.ChangeType(fieldValue, targetProperty.PropertyType);
             targetProperty.SetValue(person, convertedValue);
         }
-    }
 
-    MethodInfo sayHelloMethod = typeof(Person).GetMethod("SayHello");
+    var sayHelloMethod = typeof(Person).GetMethod("SayHello");
     sayHelloMethod.Invoke(person, null);
 
-    MethodInfo sayHelloWithParamMethod = typeof(Person).GetMethod("SayHelloWithParam");
+    var sayHelloWithParamMethod = typeof(Person).GetMethod("SayHelloWithParam");
     sayHelloWithParamMethod.Invoke(person, new object[] { "Luis" });
 
     persons.Add(person);
