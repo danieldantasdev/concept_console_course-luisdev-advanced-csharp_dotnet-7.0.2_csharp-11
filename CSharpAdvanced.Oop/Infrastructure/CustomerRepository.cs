@@ -1,33 +1,31 @@
 ﻿using CSharpAdvanced.Shared;
 
-namespace CSharpAdvanced.Oop.Infrastructure
+namespace CSharpAdvanced.Oop.Infrastructure;
+
+public class CustomerRepository : ICustomerRepository
 {
-    public class CustomerRepository : ICustomerRepository
+    private readonly IGenericRepository<Customer> _genericRepository;
+
+    public CustomerRepository(IGenericRepository<Customer> genericRepository)
     {
-        private readonly IGenericRepository<Customer> _genericRepository;
+        _genericRepository = genericRepository;
+    }
 
-        public CustomerRepository(IGenericRepository<Customer> genericRepository)
-        {
-            _genericRepository = genericRepository;
-        }
+    public int Add(Customer customer)
+    {
+        _genericRepository.Insert(customer);
+        _genericRepository.Save();
 
-        public int Add(Customer customer)
-        {
-            _genericRepository.Insert(customer);
-            _genericRepository.Save();
+        return customer.Id;
+    }
 
-            return customer.Id;
-        }
+    public IEnumerable<Customer> GetAllCustomers()
+    {
+        return _genericRepository.GetAll();
+    }
 
-        public IEnumerable<Customer> GetAllCustomers()
-        {
-            return _genericRepository.GetAll();
-        }
-
-        public Customer? GetCustomerById(int id)
-        {
-            return _genericRepository.GetById(id);
-        }
+    public Customer? GetCustomerById(int id)
+    {
+        return _genericRepository.GetById(id);
     }
 }
-

@@ -1,4 +1,5 @@
 ﻿namespace CSharpAdvanced.Oop.Notifications;
+
 public interface INotificationService
 {
     void SendNotification(string message);
